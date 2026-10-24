@@ -1,0 +1,36 @@
+===== User Endpoints =====
+
+#Api call for creating admin user
+###
+POST  http://127.0.0.1:8000/accounts/admin/register/
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "email":"admin@gmail.com",
+    "password":"password",
+    "phone":"987654321"
+}
+
+#Api call for Creating Student user
+###
+POST http://127.0.0.1:8000/accounts/student/register/
+Content-Type: application/json
+
+{
+    "username":"student01",
+    "email":"student01@gmail.com",
+    "password":"password",
+    "phone":"123456789"
+}
+
+# APi call for token generation
+###
+POST http://127.0.0.1:8000/accounts/token/
+Content-Type: application/json
+
+{
+    "username":"student01",
+    "password":"password"
+}
+
