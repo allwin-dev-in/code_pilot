@@ -1,4 +1,4 @@
-===== User Endpoints =====
+#===== User Endpoints =====
 
 #Api call for creating admin user
 ###
@@ -34,3 +34,60 @@ Content-Type: application/json
     "password":"password"
 }
 
+#===== Assessment End Points =====
+
+#Api call for listing all assessments
+###
+GET http://127.0.0.1:8000/exams/all/
+Accept: application/json
+Authorization: token 18d462a03f25c1643bc379ca7ec9081aa0ffef9c
+
+
+#Api call for adding assessments
+###
+POST  http://127.0.0.1:8000/exams/add/
+Content-Type: application/json
+Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
+
+{
+    "title":"django-main-exam",
+    "batch":"django-aug",
+    "language":"python",
+    "exam_date":"2026-12-12",
+    "duration":3,
+    "status":"active",
+    "start_time":"10:00"
+}
+
+#Api call for retiving dat id=3
+###
+GET http://127.0.0.1:8000/exams/3/
+Accept: application/json
+Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
+# Authorization: token 18d462a03f25c1643bc379ca7ec9081aa0ffef9c
+
+#Api call for Updating id=3
+###
+PUT http://127.0.0.1:8000/exams/3/
+Content-Type: application/json
+Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
+
+{
+  "id": 3,
+  "title": "django-main-exam",
+  "batch": "django-aug",
+  "language": "python",
+  "exam_date": "2026-12-12",
+  "start_time": "10:00:00",
+  "duration": 4,
+  "end_time": "13:00:00",
+  "status": "active",
+  "created_at": "2026-10-25T04:29:58.631633Z",
+  "updated_at": "2026-10-25T04:29:58.631653Z",
+  "created_by": 1
+}
+
+#Api call for delteing id=3
+###
+DELETE http://127.0.0.1:8000/exams/3/
+Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
