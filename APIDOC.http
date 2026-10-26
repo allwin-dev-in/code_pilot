@@ -103,7 +103,7 @@ Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 #Api call for inserting questions
 ###
-POST http://127.0.0.1:8000/problem/question/create/
+POST http://127.0.0.1:8000/problem/assessment/4/question/
 Content-Type: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
@@ -111,32 +111,39 @@ Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
     "title": "Two Sum",
     "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
     "score": 10,
-    "assessment": 4,
     "sample_input": "nums = [2, 7, 11, 15], target = 9",
     "sample_output": "[0, 1]"
 }
 
 #Api call for retriving id=1
 ###
-GET http://127.0.0.1:8000/problem/question/1/
+GET http://127.0.0.1:8000/problem/question/3/
 Accept: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 
 #Api call for Updating id=1
 ###
-PATCH  http://127.0.0.1:8000/problem/question/1/
+PUT  http://127.0.0.1:8000/problem/question/3/
 Content-Type: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 {
-  "title": "Two Sum Question",
-  "score": 50
+  "id": 3,
+  "title": "Two Sum",
+  "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+  "score": 60,
+  "sample_input": "nums = [2, 7, 11, 15], target = 9",
+  "sample_output": "[0, 1]",
+  "created_at": "2026-10-26T06:03:51.789719Z",
+  "updated_at": "2026-10-26T06:03:51.789770Z",
+  "assessment": 4,
+  "created_by": 1
 }
 
 #api call for deleting id =1
 ###
-DELETE http://127.0.0.1:8000/problem/question/1/
+DELETE http://127.0.0.1:8000/problem/question/2/
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 
