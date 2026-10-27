@@ -19,7 +19,9 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("accounts/",include("accounts.urls")),
-    path("exams/",include("exams.urls")),
-    path("problem/",include("problem.urls")),
+
+    path("accounts/",include("accounts.urls")), # maping to accounts app
+    path("exams/",include("exams.urls")),   # mapping to exam app[assessment]
+    path("problem/",include("problem.urls")),   # mapping to problem app[question]
+    path("evaluation/",include("evaluation.urls")), # mapping to evaluation app[submission,answer]
 ]

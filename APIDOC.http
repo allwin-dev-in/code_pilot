@@ -59,9 +59,9 @@ Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
     "start_time":"10:00"
 }
 
-#Api call for retiving dat id=3
+#Api call for retiving dat id=4
 ###
-GET http://127.0.0.1:8000/exams/3/
+GET http://127.0.0.1:8000/exams/4/
 Accept: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 # Authorization: token 18d462a03f25c1643bc379ca7ec9081aa0ffef9c
