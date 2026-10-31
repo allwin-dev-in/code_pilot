@@ -7,10 +7,13 @@ from evaluation.models import Answer
 from exams.models import Assessment
 from exams.serializers import AssessmentSerializer
 
+from problem.models import Question
+
 class SubmissionSerializer(serializers.ModelSerializer):
 
     assessment=serializers.StringRelatedField(read_only=True)
     student=serializers.StringRelatedField(read_only=True)
+
 
     answer_objects=serializers.SerializerMethodField(read_only=True)
 
@@ -30,6 +33,8 @@ class SubmissionSerializer(serializers.ModelSerializer):
 
 class AnswerSerializer(serializers.ModelSerializer):
     submission=serializers.StringRelatedField(read_only=True)
+    question=serializers.PrimaryKeyRelatedField(queryset=Question.objects.all())
+    
     class Meta:
         model=Answer
         fields="__all__"

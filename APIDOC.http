@@ -59,7 +59,12 @@ Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
     "start_time":"10:00"
 }
 
-#Api call for retiving dat id=4
+
+
+#================================================
+
+
+#Api call for retiving Assesmnet id=4
 ###
 GET http://127.0.0.1:8000/exams/4/
 Accept: application/json
@@ -147,16 +152,18 @@ DELETE http://127.0.0.1:8000/problem/question/2/
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 
-#===Submission Endpints===#
+#===Submission Endpints========================================#
 
-#Api call ofr start submission
+#Api call for start submission
 ###
-POST http://127.0.0.1:8000/evaluation/assessment/4/submission/start/
+POST http://127.0.0.1:8000/evaluation/assessment/2/submission/start/
 Content-Type: application/json
 # Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 Authorization: token 18d462a03f25c1643bc379ca7ec9081aa0ffef9c
 
-#Api call for retriving id=4
+
+
+#Api call for retriving id=12
 ###
 GET http://127.0.0.1:8000/evaluation/submission/12/
 Accept: application/json
@@ -173,20 +180,24 @@ Content-Type: application/json
 Authorization: token 18d462a03f25c1643bc379ca7ec9081aa0ffef9c
 
 {
-    "question":3,
-    "answer_text":"answer_textshdf"
+    "question":11,
+    "answer_text":"question 5 answer tesxt"
 }
 
 #Api call for retriving Answer
 ###
-GET http://127.0.0.1:8000/evaluation/answer/1/
+GET http://127.0.0.1:8000/evaluation/answer/4/
 Accept: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 
 #Api call for evaluation answer
 ###
-PUT http://127.0.0.1:8000/evaluation/answer/evaluate/1/
+Patch http://127.0.0.1:8000/evaluation/answer/evaluate/4/
 Content-Type: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
+{
+    "marks_awarded":50,
+    "feedback":"13 answer "
+}
