@@ -18,11 +18,13 @@ from evaluation.permissions import IsStudentUser
 from evaluation.serializers import SubmissionSerializer
 from evaluation.serializers import AnswerSerializer
 
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 # Create your views here.
 
 class SubmissionStartView(APIView):
-    authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[IsStudentUser]
+    authentication_classes=[JWTAuthentication]
+    permission_classes=[permissions.IsAuthenticated,IsStudentUser]
 
     def post(self,request,pk=None):
         assessment_id=pk
@@ -89,13 +91,14 @@ class AnswerEvaluateView(UpdateAPIView):
         answer_id=pk
         answer_object=get_object_or_404(Answer,id=answer_id)
         form_data=request.data
+
         serializer_instance=AnswerSerializer(data=form_data,instance=answer_object,partial=True)
         serializer_instance.fields["marks_awarded"].read_only=False
         serializer_instance.fields["feedback"].read_only=False
 
         #Validation (marks)
         question_object=Question.objects.filter(title=answer_object.question)
-        question_mark=question_object["score"]
+        question_mark=question_object.get("score")
         print(question_mark)
 
         if serializer_instance.is_valid():

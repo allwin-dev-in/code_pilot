@@ -34,6 +34,17 @@ Content-Type: application/json
     "password":"password"
 }
 
+
+#Api call for jwt token pair
+###
+POST http://127.0.0.1:8000/accounts/jwt/token/
+Content-Type: application/json
+
+{
+    "username":"student01",
+    "password":"password"
+}
+
 #===== Assessment End Points =====
 
 #Api call for listing all assessments
@@ -50,11 +61,11 @@ Content-Type: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 {
-    "title":"django-main-exam",
-    "batch":"django-aug",
+    "title":"python-main-exam",
+    "batch":"python-june",
     "language":"python",
-    "exam_date":"2026-12-12",
-    "duration":3,
+    "exam_date":"2026-11-30",
+    "duration":4,
     "status":"active",
     "start_time":"10:00"
 }
@@ -66,7 +77,7 @@ Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 #Api call for retiving Assesmnet id=4
 ###
-GET http://127.0.0.1:8000/exams/4/
+GET http://127.0.0.1:8000/exams/5/
 Accept: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 # Authorization: token 18d462a03f25c1643bc379ca7ec9081aa0ffef9c
@@ -108,16 +119,16 @@ Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 #Api call for inserting questions
 ###
-POST http://127.0.0.1:8000/problem/assessment/4/question/
+POST http://127.0.0.1:8000/problem/assessment/5/question/
 Content-Type: application/json
 Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 {
-    "title": "Two Sum",
-    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-    "score": 10,
-    "sample_input": "nums = [2, 7, 11, 15], target = 9",
-    "sample_output": "[0, 1]"
+    "title": "Explain Python",
+    "description": "explain python advantages",
+    "score": 15,
+    "sample_input": "Python",
+    "sample_output": "Python is ..."
 }
 
 #Api call for retriving id=1
@@ -154,14 +165,12 @@ Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
 
 #===Submission Endpints========================================#
 
+
 #Api call for start submission
 ###
-POST http://127.0.0.1:8000/evaluation/assessment/2/submission/start/
+POST http://127.0.0.1:8000/evaluation/assessment/12/submission/start/
 Content-Type: application/json
-# Authorization: token 46676baf7a8390e1ab3129aa607416d6d060e6e8
-Authorization: token 18d462a03f25c1643bc379ca7ec9081aa0ffef9c
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjAyNTg2LCJpYXQiOjE3OTM2MDIyODYsImp0aSI6IjViOGYyMzkwNGI2YjQwYzRiYTJkNTUyMjdmOGJkODMyIiwidXNlcl9pZCI6IjIifQ.gspUxZS0BZkRmz2CkU7-vXmMIQGPk66tuNhkQyVTMic
 
 #Api call for retriving id=12
 ###
