@@ -68,7 +68,6 @@ Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjg5MzcxLCJpYXQiOjE3OTM2ODkwNzEsImp0aSI6ImY5MTZlNWIzMTJiNTQ3NjA4ODhiMmUyZDE2Nzg2MTZkIiwidXNlcl9pZCI6IjMifQ.Axpis1LDn31YEn20_OvZHdVpE14SCY_Eqv2Edkn-oxY
 
 
-
 #===== Assessment End Points =====
 
 #Api call for listing all assessments
