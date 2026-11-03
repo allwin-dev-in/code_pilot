@@ -6,10 +6,10 @@ POST  http://127.0.0.1:8000/accounts/admin/register/
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "email":"admin@gmail.com",
+    "username":"admin123",
+    "email":"admin123@gmail.com",
     "password":"password",
-    "phone":"987654321"
+    "phone":"9876543210"
 }
 
 #Api call for Creating Student user
@@ -18,10 +18,10 @@ POST http://127.0.0.1:8000/accounts/student/register/
 Content-Type: application/json
 
 {
-    "username":"student01",
-    "email":"student01@gmail.com",
+    "username":"student03",
+    "email":"student03@gmail.com",
     "password":"password",
-    "phone":"123456789"
+    "phone":"1234567"
 }
 
 # APi call for token generation
@@ -41,9 +41,33 @@ POST http://127.0.0.1:8000/accounts/jwt/token/
 Content-Type: application/json
 
 {
-    "username":"student01",
+    "username":"student02",
     "password":"password"
 }
+
+
+#Api call for completing student profile
+###
+PUT http://127.0.0.1:8000/accounts/profile/complete/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjg3MzM1LCJpYXQiOjE3OTM2ODcwMzUsImp0aSI6IjBlZDE0YmY2MmFiZDQ5YWE5NWMwNmZiOWEwNTRkMjc5IiwidXNlcl9pZCI6IjIifQ.ztvf_tI9LT76BR7yFHSFZ7GEfFbfT7QbMl8V5qc7TZo
+
+{
+    "skills":"skill01aasas",
+    "qualification":"bcaaaa",
+    "passoutyear":"2026",
+    "githuburl":"https://www.linkedin.com",
+    "linkedurl":"https://www.git-hub.com"
+}
+
+
+#APi call for profile Detail view
+###
+GET http://127.0.0.1:8000/accounts/profile/me/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjg5MzcxLCJpYXQiOjE3OTM2ODkwNzEsImp0aSI6ImY5MTZlNWIzMTJiNTQ3NjA4ODhiMmUyZDE2Nzg2MTZkIiwidXNlcl9pZCI6IjMifQ.Axpis1LDn31YEn20_OvZHdVpE14SCY_Eqv2Edkn-oxY
+
+
 
 #===== Assessment End Points =====
 
