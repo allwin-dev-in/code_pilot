@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save
+from django.core.mail import send_mail
 
 from django.contrib.auth.models import AbstractUser
 
@@ -35,3 +36,20 @@ def create_student_profile(sender,instance,created,*args,**kwargs):
         StudentProfile.objects.create(student=instance)
 
 post_save.connect(create_student_profile,sender=User)
+
+def send_invitation_mail(sender,instance,created,*args,**kwargs):
+    if created and instance.role=="student":
+        email=instance.email
+        print(email)
+        send_mail(
+        "Account Creation Confirmation",
+        f"""{instance.username}, Thank you for creating account in codepiolet application.
+            you account details are \n 
+            Username:{instance.username}\n
+            Email:{instance.email}\n
+            Phone:{instance.phone}\n""",
+        "allwin.dev.in@gmail.com",
+        [instance.email],
+        )
+
+post_save.connect(send_invitation_mail,sender=User)

@@ -18,10 +18,10 @@ POST http://127.0.0.1:8000/accounts/student/register/
 Content-Type: application/json
 
 {
-    "username":"student03",
-    "email":"student03@gmail.com",
+    "username":"allwin",
+    "email":"allwingraison@gmail.com",
     "password":"password",
-    "phone":"1234567"
+    "phone":"9446677907"
 }
 
 # APi call for token generation
@@ -41,7 +41,7 @@ POST http://127.0.0.1:8000/accounts/jwt/token/
 Content-Type: application/json
 
 {
-    "username":"student02",
+    "username":"student02@gmail.com",
     "password":"password"
 }
 
