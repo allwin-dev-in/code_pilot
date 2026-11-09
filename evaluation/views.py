@@ -11,12 +11,14 @@ from rest_framework import serializers
 from exams.models import Assessment
 
 from problem.models import Question
+from problem.serializers import QuestionSerializer
 
 from evaluation.models import Submission
 from evaluation.models import Answer
 from evaluation.permissions import IsStudentUser
 from evaluation.serializers import SubmissionSerializer
 from evaluation.serializers import AnswerSerializer
+
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
@@ -78,7 +80,7 @@ class AnswerRetriveView(APIView):
         serializer_instance=AnswerSerializer(instance)
         return Response (serializer_instance.data)
 
-class AnswerEvaluateView(UpdateAPIView):
+class AnswerEvaluateView(APIView):
     authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAdminUser]
 
@@ -86,25 +88,26 @@ class AnswerEvaluateView(UpdateAPIView):
     queryset=Answer.objects.all()
 
 
+    def patch(self, request, pk=None):
+        answer_object = get_object_or_404(Answer,id=pk)
+        form_data = request.data
 
-    def patch(self,request,pk=None):
-        answer_id=pk
-        answer_object=get_object_or_404(Answer,id=answer_id)
-        form_data=request.data
+        question_object=answer_object.question
+        max_marks=question_object.score
 
         serializer_instance=AnswerSerializer(data=form_data,instance=answer_object,partial=True)
+        
         serializer_instance.fields["marks_awarded"].read_only=False
         serializer_instance.fields["feedback"].read_only=False
 
-        #Validation (marks)
-        question_object=Question.objects.filter(title=answer_object.question)
-        question_mark=question_object.get("score")
-        print(question_mark)
-
+   
         if serializer_instance.is_valid():
-            # Answer.objects.filter(id=answer_id).update(**form_data)
-            serializer_instance.save()
+            marks_awarded=serializer_instance.validated_data.get("marks_awarded")
 
+            if marks_awarded is not None and marks_awarded > max_marks :
+                raise ValueError({"marks_awarded": "Entered amount is more than the maximum marks for this question."})
+            
+            serializer_instance.save()
             return Response(serializer_instance.data)
         else:
             return Response(data=serializer_instance.errors)
